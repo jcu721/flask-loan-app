@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+flask = "==1.1.4"
+flask-restful = "==0.3.9"
+flask-sqlalchemy = "==2.5.1"
+marshmallow = "==3.12.1"
+
+[dev-packages]
+black = "==21.5b2"
+pytest = "==6.2.4"
+pytest-cov = "==2.12.1"
+pytest-sugar = "==0.9.4"
+
+[requires]
+python_version = "3.9"

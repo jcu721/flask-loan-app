@@ -5,6 +5,7 @@ from flask_restful import Resource, abort
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 
+from football_api.calculations import calculate_loan
 from football_api.database import db
 from football_api.models import Application
 from football_api.schemas import ApplicationSchema
@@ -66,10 +67,11 @@ class ApplicationResource(Resource):
         Adds a new Application to the database and synchronously calculates the
         LoanOffer.
 
-        :return: Application.id, 201 HTTP status code.
+        :return: (Application.id, LoanOffer.id), 201 HTTP status code.
         """
         app = ApplicationSchema().load(request.get_json())
 
+        # TODO get this into a single transaction
         try:
             db.session.add(app)
             db.session.commit()
@@ -79,5 +81,20 @@ class ApplicationResource(Resource):
             )
 
             abort(500, message="Unexpected Error!")
+
+        # calculate loan offer, then add new obj to db
+        # (must be done after creating the application so it has the reference)
+        loan_offer = calculate_loan(app)
+
+        try:
+            db.session.add(loan_offer)
+            db.session.commit()
+        except IntegrityError as e:
+            logger.warning(
+                f"Something went wrong saving the loan offer to db. Error: {e}"
+            )
+
+            abort(500, message="Unexpected Error!")
         else:
-            return app.id, 201
+            # TODO return full serialized version of the loan offer
+            return (app.id, loan_offer.id), 201

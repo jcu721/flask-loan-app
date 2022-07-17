@@ -56,7 +56,7 @@ class LoanOffer(db.Model):
     monthly_payment = db.Column(db.Float)
     term_length_months = db.Column(db.Integer)
 
-    accepted = db.Column(db.Boolean)
+    accepted = db.Column(db.Boolean, nullable=False)
     rejection_reason = db.Column(db.String)  # comma separated list of rejection reasons
 
     # backrefs to other models

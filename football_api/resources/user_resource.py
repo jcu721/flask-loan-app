@@ -68,7 +68,7 @@ class UserResource(Resource):
             db.session.commit()
         except IntegrityError as e:
             logger.warning(
-                f"Integrity Error, this team is already in the database. Error: {e}"
+                f"Integrity Error, this user is already in the database. Error: {e}"
             )
 
             abort(500, message="Unexpected Error!")

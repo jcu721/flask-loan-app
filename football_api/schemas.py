@@ -23,7 +23,7 @@ class ApplicationSchema(Schema):
     """
 
     id = fields.Integer(allow_none=False)
-    user = fields.Nested(UserSchema(), dump_only=True)
+    user_id = fields.Integer(allow_none=False)
 
     credit_score = fields.Integer()
     bankruptcies = fields.Integer()
@@ -44,8 +44,8 @@ class LoanOfferSchema(Schema):
     """
 
     id = fields.Integer(allow_none=False)
-    user = fields.Nested(UserSchema(), dump_only=True)
-    application = fields.Nested(ApplicationSchema(), dump_only=True)
+    user_id = fields.Integer(allow_none=False)
+    application_id = fields.Integer(allow_none=False)
 
     apr = fields.Number()
     monthly_payment = fields.Number()

@@ -4,11 +4,9 @@ from flask import request
 from flask_restful import Resource, abort
 from sqlalchemy.exc import IntegrityError
 
-
 from football_api.database import db
 from football_api.models.season import Season
 from football_api.schemas.season_schema import SeasonSchema
-
 
 SEASONS_ENDPOINT = "/api/seasons"
 logger = logging.getLogger(__name__)

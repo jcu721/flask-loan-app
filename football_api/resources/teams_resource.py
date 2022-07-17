@@ -9,7 +9,6 @@ from football_api.database import db
 from football_api.models.team import Team
 from football_api.schemas.team_schema import TeamSchema
 
-
 logger = logging.getLogger(__name__)
 
 

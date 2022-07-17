@@ -9,7 +9,6 @@ from football_api.database import db
 from football_api.models import User
 from football_api.schemas import UserSchema
 
-
 USER_ENDPOINT = "/api/user"
 logger = logging.getLogger(__name__)
 

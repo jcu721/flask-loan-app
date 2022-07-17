@@ -5,5 +5,5 @@ This is the source-code for my [Building a RESTful API with Flask, Flask-RESTful
 
 To start the Flask-RESTFul API simply execute the following from the command line once everything is installed:
 ```bash
-$ python football_api/api.py 
+$ python football_api/api.py
 ```

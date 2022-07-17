@@ -1,6 +1,5 @@
 from football_api.resources.players_resource import PLAYERS_ENDPOINT
 
-
 NUM_PLAYERS_IN_BASE_DB = 4
 
 

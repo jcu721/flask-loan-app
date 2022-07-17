@@ -8,7 +8,6 @@ from football_api.database import db
 from football_api.models.stats import Stats
 from football_api.schemas.stats_schema import StatsSchema
 
-
 STATS_ENDPOINT = "/api/stats"
 STATS_PLAYER_ENDPOINT = f"{STATS_ENDPOINT}/player/<player_id>"
 STATS_SEASON_ENDPOINT = f"{STATS_ENDPOINT}/season/<season>"

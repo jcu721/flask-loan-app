@@ -2,27 +2,24 @@ import logging
 import sys
 from os import path
 
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
-
-
 from flask import Flask
 from flask_restful import Api
-from flask_sqlalchemy import SQLAlchemy
 
-from football_api.constants import PROJECT_ROOT, FANTASY_FOOTBALL_DATABASE
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+from football_api.constants import FANTASY_FOOTBALL_DATABASE, PROJECT_ROOT
 from football_api.database import db
-from football_api.resources.user_resource import UserResource, USER_ENDPOINT
-from football_api.resources.players_resource import PlayersResource, PLAYERS_ENDPOINT
-from football_api.resources.seasons_resource import SeasonsResource, SEASONS_ENDPOINT
+from football_api.resources.players_resource import PLAYERS_ENDPOINT, PlayersResource
+from football_api.resources.seasons_resource import SEASONS_ENDPOINT, SeasonsResource
 from football_api.resources.stats_resources import (
-    StatsResource,
-    StatsPlayerResource,
-    StatsSeasonResource,
     STATS_ENDPOINT,
     STATS_PLAYER_ENDPOINT,
     STATS_SEASON_ENDPOINT,
+    StatsPlayerResource,
+    StatsResource,
+    StatsSeasonResource,
 )
-from football_api.resources.teams_resource import TeamsResource, TEAMS_ENDPOINT
+from football_api.resources.teams_resource import TEAMS_ENDPOINT, TeamsResource
+from football_api.resources.user_resource import USER_ENDPOINT, UserResource
 
 
 def create_app(db_location):

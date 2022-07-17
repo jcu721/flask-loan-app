@@ -1,7 +1,7 @@
 from shutil import copy
 
-
 import pytest
+
 from football_api.api import create_app
 from football_api.constants import FANTASY_FOOTBALL_DATABASE, PROJECT_ROOT
 

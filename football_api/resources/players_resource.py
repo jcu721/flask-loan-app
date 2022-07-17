@@ -6,8 +6,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 
 from football_api.database import db
-from football_api.models.player import Player
-from football_api.schemas.player_schema import PlayerSchema
+from football_api.models_bak.player import Player
+from football_api.schemas_bak.player_schema import PlayerSchema
 
 PLAYERS_ENDPOINT = "/api/players"
 logger = logging.getLogger(__name__)

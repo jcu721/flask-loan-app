@@ -6,6 +6,7 @@ from flask import Flask
 from flask_restful import Api
 
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+
 from football_api.constants import FANTASY_FOOTBALL_DATABASE, PROJECT_ROOT
 from football_api.database import db
 from football_api.resources.players_resource import PLAYERS_ENDPOINT, PlayersResource

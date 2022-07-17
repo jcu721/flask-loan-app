@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, post_load
 
-from football_api.models.team import Team
+from football_api.models_bak.team import Team
 
 
 class TeamSchema(Schema):

@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, post_load
 
-from football_api.models.season import Season
+from football_api.models_bak.season import Season
 
 
 class SeasonSchema(Schema):

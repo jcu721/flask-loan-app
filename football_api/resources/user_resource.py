@@ -47,11 +47,8 @@ class UserResource(Resource):
         logger.info(f"user retrieved from database {user_json}")
         return user_json
 
-    def _get_all_users(self, position):
-        if position:
-            users = User.query.filter_by(position=position).all()
-        else:
-            users = User.query.all()
+    def _get_all_users(self):
+        users = User.query.all()
 
         users_json = [UserSchema().dump(user) for user in users]
 

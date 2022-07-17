@@ -14,13 +14,17 @@ logger = logging.getLogger(__name__)
 
 
 class ApplicationResource(Resource):
+    """
+    Expose REST GET and POST endpoints for the Application Resource.
+    """
+
     def get(self, id=None):
         """
         ApplicationResource GET method.
 
-        If no parameter provided, retrieves all users found in the database.
+        If no parameter provided, retrieves all applications found in the database.
 
-        If id is specifiecd, then that specific user instance is retrieved.
+        If id is specified, then that specific applicaation instance is retrieved.
 
         :param id: Application ID to retrieve [optional]
         :return: Application, 200 HTTP status code
@@ -57,7 +61,10 @@ class ApplicationResource(Resource):
 
     def post(self):
         """
-        ApplicationsResource POST method. Adds a new Application to the database.
+        ApplicationsResource POST method.
+
+        Adds a new Application to the database and synchronously calculates the
+        LoanOffer.
 
         :return: Application.id, 201 HTTP status code.
         """

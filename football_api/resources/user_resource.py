@@ -20,7 +20,7 @@ class UserResource(Resource):
 
         If no parameter provided, retrieves all users found in the database.
 
-        If id is specifiecd, then that specific user instance is retrieved.
+        If id is specified, then that specific user instance is retrieved.
 
         :param id: User ID to retrieve [optional]
         :return: User, 200 HTTP status code

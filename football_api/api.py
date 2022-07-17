@@ -1,3 +1,4 @@
+# flake8: noqa: E402
 import logging
 import sys
 from os import path
@@ -10,6 +11,7 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from football_api.constants import FANTASY_FOOTBALL_DATABASE, PROJECT_ROOT
 from football_api.database import db
 from football_api.resources.application_resource import APPLICATION_ENDPOINT, ApplicationResource
+from football_api.resources.loan_offer_resource import LOAN_OFFER_ENDPOINT, LoanOfferResource
 from football_api.resources.players_resource import PLAYERS_ENDPOINT, PlayersResource
 from football_api.resources.seasons_resource import SEASONS_ENDPOINT, SeasonsResource
 from football_api.resources.stats_resources import (
@@ -56,6 +58,7 @@ def create_app(db_location):
     api.add_resource(TeamsResource, TEAMS_ENDPOINT, f"{TEAMS_ENDPOINT}/<id>")
     api.add_resource(UserResource, USER_ENDPOINT, f"{USER_ENDPOINT}/<id>")
     api.add_resource(ApplicationResource, APPLICATION_ENDPOINT, f"{APPLICATION_ENDPOINT}/<id>")
+    api.add_resource(LoanOfferResource, LOAN_OFFER_ENDPOINT, f"{LOAN_OFFER_ENDPOINT}/<id>")
 
     return app
 

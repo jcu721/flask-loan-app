@@ -7,9 +7,11 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
 from flask import Flask
 from flask_restful import Api
+from flask_sqlalchemy import SQLAlchemy
 
 from football_api.constants import PROJECT_ROOT, FANTASY_FOOTBALL_DATABASE
 from football_api.database import db
+from football_api.resources.user_resource import UserResource, USER_ENDPOINT
 from football_api.resources.players_resource import PlayersResource, PLAYERS_ENDPOINT
 from football_api.resources.seasons_resource import SeasonsResource, SEASONS_ENDPOINT
 from football_api.resources.stats_resources import (
@@ -41,7 +43,10 @@ def create_app(db_location):
 
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = db_location
-    db.init_app(app)
+
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
 
     api = Api(app)
     api.add_resource(PlayersResource, PLAYERS_ENDPOINT, f"{PLAYERS_ENDPOINT}/<id>")
@@ -50,6 +55,8 @@ def create_app(db_location):
     api.add_resource(StatsPlayerResource, STATS_PLAYER_ENDPOINT)
     api.add_resource(StatsSeasonResource, STATS_SEASON_ENDPOINT)
     api.add_resource(TeamsResource, TEAMS_ENDPOINT, f"{TEAMS_ENDPOINT}/<id>")
+    api.add_resource(UserResource, USER_ENDPOINT, f"{USER_ENDPOINT}/<id>")
+
     return app
 
 

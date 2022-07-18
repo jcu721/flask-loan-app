@@ -49,8 +49,9 @@ Created with [ERAlchemy](https://pypi.org/project/ERAlchemy/).
 
 ## Using the API
 
-A Postman json export has been provided, `loan_app.postman_collection.json`, for
-ease of playing around with the api.
+A Postman json export has been provided,
+![Postman JSON Export](/loan_app.postman_collection.json?raw=true), for ease of
+playing around with the api.
 
 Alternatively, use the following curl examples to add and inspect data:
 

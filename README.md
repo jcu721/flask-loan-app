@@ -1,10 +1,23 @@
-#### Loan Application REST API with Flask, Flask-RESTful and SQLAlchemy
----
-
+### Loan Application REST API
 Jane Upshur's submission for the Tenet Back End Technical Assignment.
 
-Based off of flask tutorial from [Building a RESTful API with Flask, Flask-RESTful, SQLAlchemy and pytest](https://ericbernier.com/flask-restful-api) blog post.
+Based off of the flask tutorial from [Building a RESTful API with Flask, Flask-RESTful, SQLAlchemy and pytest](https://ericbernier.com/flask-restful-api) blog post.
 
+This app is a simple flask REST app backed by a SQLite database.
+The app is a POC for a loan application that generates loan application
+approvals and rejections based on the application criteria.
+
+The app exposes the following three endpoints:
+GET, POST /api/user
+GET, POST /api/application
+GET /api/loan-offer
+
+Users and loan applications can be created from the API using POST commands.
+A valid loan application POST request will also create and calculate the
+Loan Offer and return whether the application is rejected or approved.
+
+A GET request for each resource yields all of the objects of that type
+currently in the database.
 
 ## Prerequisites
 - Python 3.9 installed
@@ -23,7 +36,53 @@ pipenv install
 #. Run the flask app
 To start the Flask-RESTFul API run the following from the command line:
 ```bash
-$ python football_api/api.py
+$ python loan_app/api.py
+```
+
+## Using the API
+
+A Postman json export has been provided (loan_app.postman_collection.json) for
+ease of playing around with the api.
+
+Alternatively, use the following curl examples to add and inspect data:
+
+Get all users:
+`curl --location --request GET 'http://127.0.0.1:5000/api/user'`
+
+Create user:
+```bash
+curl --location --request POST 'http://127.0.0.1:5000/api/user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "first_name": "Nigel",
+    "last_name": "Thornberry"
+}'
+```
+
+Get Loan Applications:
+```bash
+curl --location --request GET 'http://127.0.0.1:5000/api/application'
+```
+
+Create Loan Application:
+```bash
+curl --location --request POST 'http://127.0.0.1:5000/api/application' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user_id": 1,
+    "credit_score": 820,
+    "bankruptcies": 0,
+    "delinquincies": 0,
+    "monthly_debt": 3000,
+    "monthly_income": 15000,
+    "vehicle_value": 73000,
+    "loan_amount": 55000
+}'
+```
+
+Get Loan Offers:
+```bash
+curl --location --request GET 'http://127.0.0.1:5000/api/loan-offer'
 ```
 
 ## TODOs / Future Work:

@@ -1,3 +1,8 @@
+"""
+Main API entrypoint.
+
+Will create the SQLite DB if it does not already exist.
+"""
 # flake8: noqa: E402
 import logging
 import sys

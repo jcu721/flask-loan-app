@@ -1,3 +1,6 @@
+"""
+Marshmallow schema definitions.
+"""
 from marshmallow import Schema, fields, post_load
 
 from loan_app.models import Application, LoanOffer, User

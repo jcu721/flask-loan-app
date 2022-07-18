@@ -1,6 +1,4 @@
 # Loan Application REST API
-Jane Upshur's submission for the Tenet Back End Technical Assignment.
-
 Based off of the flask tutorial from [Building a RESTful API with Flask, Flask-RESTful, SQLAlchemy and pytest](https://ericbernier.com/flask-restful-api) blog post.
 
 This app is a simple flask REST app backed by a SQLite database.
@@ -37,10 +35,11 @@ pipenv install
 
 To start the Flask-RESTFul API run the following from the command line:
 ```bash
-$ python loan_app/api.py
+pipenv run python loan_app/api.py
 ```
 
-This should create the SQLite database in a file named `loan_app.db`.
+This should create the SQLite database in a file named `loan_app.db` and start
+a flask server running on port 5000.
 
 ## Entity Relation Diagram
 Created with [ERAlchemy](https://pypi.org/project/ERAlchemy/).

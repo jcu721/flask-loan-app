@@ -44,7 +44,7 @@ class UserResource(Resource):
         if not user_json:
             raise NoResultFound()
 
-        logger.info(f"user retrieved from database {user_json}")
+        logger.info(f"User retrieved from database {user_json}")
         return user_json
 
     def _get_all_users(self):
@@ -73,4 +73,5 @@ class UserResource(Resource):
 
             abort(500, message="Unexpected Error!")
         else:
+            logger.info(f"Created new user: {UserSchema().dump(user)}")
             return UserSchema().dump(user), 201

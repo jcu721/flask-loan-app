@@ -96,5 +96,9 @@ class ApplicationResource(Resource):
 
             abort(500, message="Unexpected Error!")
         else:
-            return_val = [ApplicationSchema().dump(app), LoanOfferSchema().dump(loan_offer)]
+            app_serialized = ApplicationSchema().dump(app)
+            loan_offer_serialized = LoanOfferSchema().dump(loan_offer)
+            logger.info(f"Created new Application: {app_serialized} and LoanOffer: {loan_offer_serialized}")
+
+            return_val = [app_serialized, loan_offer_serialized]
             return return_val, 201

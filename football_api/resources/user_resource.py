@@ -22,8 +22,8 @@ class UserResource(Resource):
 
         If id is specified, then that specific user instance is retrieved.
 
-        :param id: User ID to retrieve [optional]
-        :return: User, 200 HTTP status code
+        @param id: User ID to retrieve [optional]
+        @returns User, 200 HTTP status code
         """
         if not id:
             logger.info("Retrieving all users")
@@ -59,7 +59,7 @@ class UserResource(Resource):
         """
         UsersResource POST method. Adds a new User to the database.
 
-        :return: User.id, 201 HTTP status code.
+        @returns User (json serialized), 201 HTTP status code
         """
         user = UserSchema().load(request.get_json())
 
@@ -73,4 +73,4 @@ class UserResource(Resource):
 
             abort(500, message="Unexpected Error!")
         else:
-            return user.id, 201
+            return UserSchema().dump(user), 201

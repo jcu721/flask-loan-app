@@ -8,7 +8,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from football_api.calculations import calculate_loan
 from football_api.database import db
 from football_api.models import Application
-from football_api.schemas import ApplicationSchema
+from football_api.schemas import ApplicationSchema, LoanOfferSchema
 
 APPLICATION_ENDPOINT = "/api/application"
 logger = logging.getLogger(__name__)
@@ -25,10 +25,10 @@ class ApplicationResource(Resource):
 
         If no parameter provided, retrieves all applications found in the database.
 
-        If id is specified, then that specific applicaation instance is retrieved.
+        If id is specified, then that specific application instance is retrieved.
 
-        :param id: Application ID to retrieve [optional]
-        :return: Application, 200 HTTP status code
+        @param id: Application ID to retrieve [optional]
+        @returns Application, 200 HTTP status code
         """
         if not id:
             logger.info("Retrieving all applications")
@@ -67,7 +67,7 @@ class ApplicationResource(Resource):
         Adds a new Application to the database and synchronously calculates the
         LoanOffer.
 
-        :return: (Application.id, LoanOffer.id), 201 HTTP status code.
+        @returns [Application, LoanOffer], 201 HTTP status code
         """
         app = ApplicationSchema().load(request.get_json())
 
@@ -96,5 +96,5 @@ class ApplicationResource(Resource):
 
             abort(500, message="Unexpected Error!")
         else:
-            # TODO return full serialized version of the loan offer
-            return (app.id, loan_offer.id), 201
+            return_val = [ApplicationSchema().dump(app), LoanOfferSchema().dump(loan_offer)]
+            return return_val, 201

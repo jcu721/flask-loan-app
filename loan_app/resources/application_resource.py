@@ -5,10 +5,10 @@ from flask_restful import Resource, abort
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 
-from football_api.calculations import calculate_loan
-from football_api.database import db
-from football_api.models import Application
-from football_api.schemas import ApplicationSchema, LoanOfferSchema
+from loan_app.calculations import calculate_loan
+from loan_app.database import db
+from loan_app.models import Application
+from loan_app.schemas import ApplicationSchema, LoanOfferSchema
 
 APPLICATION_ENDPOINT = "/api/application"
 logger = logging.getLogger(__name__)

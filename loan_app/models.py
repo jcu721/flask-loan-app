@@ -1,7 +1,7 @@
 """
 SQLAlchemy Model Definitions.
 """
-from football_api.database import db
+from loan_app.database import db
 
 
 class User(db.Model):

@@ -17,7 +17,7 @@ Using the following criteria for decision making:
 """
 import numpy_financial as npf
 
-from football_api.models import LoanOffer
+from loan_app.models import LoanOffer
 
 LOAN_OFFER_TERM_MONTHS = 72  # use 72 month term as default
 

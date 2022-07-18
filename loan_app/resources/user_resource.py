@@ -5,9 +5,9 @@ from flask_restful import Resource, abort
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 
-from football_api.database import db
-from football_api.models import User
-from football_api.schemas import UserSchema
+from loan_app.database import db
+from loan_app.models import User
+from loan_app.schemas import UserSchema
 
 USER_ENDPOINT = "/api/user"
 logger = logging.getLogger(__name__)

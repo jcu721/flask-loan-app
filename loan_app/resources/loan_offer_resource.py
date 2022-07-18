@@ -3,8 +3,8 @@ import logging
 from flask_restful import Resource, abort
 from sqlalchemy.orm.exc import NoResultFound
 
-from football_api.models import LoanOffer
-from football_api.schemas import LoanOfferSchema
+from loan_app.models import LoanOffer
+from loan_app.schemas import LoanOfferSchema
 
 LOAN_OFFER_ENDPOINT = "/api/loan-offer"
 logger = logging.getLogger(__name__)

@@ -6,13 +6,14 @@ from os import path
 from flask import Flask
 from flask_restful import Api
 
+# TODO fix this local dependency namespace issue
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from football_api.constants import FANTASY_FOOTBALL_DATABASE, PROJECT_ROOT
-from football_api.database import db
-from football_api.resources.application_resource import APPLICATION_ENDPOINT, ApplicationResource
-from football_api.resources.loan_offer_resource import LOAN_OFFER_ENDPOINT, LoanOfferResource
-from football_api.resources.user_resource import USER_ENDPOINT, UserResource
+from loan_app.constants import LOAN_APP_DATABASE, PROJECT_ROOT
+from loan_app.database import db
+from loan_app.resources.application_resource import APPLICATION_ENDPOINT, ApplicationResource
+from loan_app.resources.loan_offer_resource import LOAN_OFFER_ENDPOINT, LoanOfferResource
+from loan_app.resources.user_resource import USER_ENDPOINT, UserResource
 
 
 def create_app(db_location):
@@ -26,7 +27,7 @@ def create_app(db_location):
         level=logging.DEBUG,
         format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
         datefmt="%m-%d %H:%M",
-        handlers=[logging.FileHandler("football_api.log"), logging.StreamHandler()],
+        handlers=[logging.FileHandler("loan_app.log"), logging.StreamHandler()],
     )
 
     app = Flask(__name__)
@@ -46,5 +47,5 @@ def create_app(db_location):
 
 
 if __name__ == "__main__":
-    app = create_app(f"sqlite:////{PROJECT_ROOT}/{FANTASY_FOOTBALL_DATABASE}")
+    app = create_app(f"sqlite:////{PROJECT_ROOT}/{LOAN_APP_DATABASE}")
     app.run(debug=True)

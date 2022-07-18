@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, post_load
 
-from football_api.models import Application, LoanOffer, User
+from loan_app.models import Application, LoanOffer, User
 
 
 class UserSchema(Schema):

@@ -1,4 +1,4 @@
-### Loan Application REST API
+# Loan Application REST API
 Jane Upshur's submission for the Tenet Back End Technical Assignment.
 
 Based off of the flask tutorial from [Building a RESTful API with Flask, Flask-RESTful, SQLAlchemy and pytest](https://ericbernier.com/flask-restful-api) blog post.
@@ -8,9 +8,9 @@ The app is a POC for a loan application that generates loan application
 approvals and rejections based on the application criteria.
 
 The app exposes the following three endpoints:
-GET, POST /api/user
-GET, POST /api/application
-GET /api/loan-offer
+- GET, POST /api/user
+- GET, POST /api/application
+- GET /api/loan-offer
 
 Users and loan applications can be created from the API using POST commands.
 A valid loan application POST request will also create and calculate the
@@ -28,20 +28,23 @@ pip install pipenv
 
 ## Set Up
 
-#. Install python dependencies with pipenv
+1. Install python dependencies with pipenv
 ```bash
 pipenv install
 ```
 
-#. Run the flask app
+2. Run the flask app
+
 To start the Flask-RESTFul API run the following from the command line:
 ```bash
 $ python loan_app/api.py
 ```
 
+This should create the SQLite database in a file named `loan_app.db`.
+
 ## Using the API
 
-A Postman json export has been provided (loan_app.postman_collection.json) for
+A Postman json export has been provided, `loan_app.postman_collection.json`, for
 ease of playing around with the api.
 
 Alternatively, use the following curl examples to add and inspect data:
